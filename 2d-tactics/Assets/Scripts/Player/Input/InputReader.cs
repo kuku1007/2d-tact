@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 [CreateAssetMenu(fileName = "InputReader", menuName = "Game/Input Reader")]
 public class InputReader : ScriptableObject, Gen_PlayerInputActions.IPlayerActions
@@ -25,7 +26,11 @@ public class InputReader : ScriptableObject, Gen_PlayerInputActions.IPlayerActio
 	}
 
     public void OnClick(InputAction.CallbackContext context)
-    {
+    {       
+        if(EventSystem.current.IsPointerOverGameObject())
+            return;
+
+
         if (clickEvent != null && context.phase == InputActionPhase.Performed)
 			clickEvent.Invoke(inputActions.Player.PointerPos.ReadValue<Vector2>());
     }

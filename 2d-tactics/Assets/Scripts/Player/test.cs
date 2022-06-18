@@ -40,13 +40,13 @@ public class test : MonoBehaviour
 
     private void showTileIndex(Vector2 pos) {
 
-        Debug.Log("in: " + pos);
+       // Debug.Log("in: " + pos);
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(pos);
-        Debug.Log("world in: " + worldPos);
-        Debug.Log("Field id: " + field.WorldToCell(worldPos));
-        Debug.Log("Obstacle id: " + obstacles.WorldToCell(worldPos));
+       // Debug.Log("world in: " + worldPos);
+       // Debug.Log("Field id: " + field.WorldToCell(worldPos));
+        //Debug.Log("Obstacle id: " + obstacles.WorldToCell(worldPos));
         float dist = axialDistance(new Vector2Int(0,0), (Vector2Int)field.WorldToCell(worldPos));
-        Debug.Log("Distance: " + dist);
+        //Debug.Log("Distance: " + dist);
     }
     Vector2Int oddrToAxial(Vector2Int hex) {
         var q = hex.x - (-hex.y - (-hex.y&1)) / 2;
