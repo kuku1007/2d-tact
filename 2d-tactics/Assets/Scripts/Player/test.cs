@@ -7,7 +7,7 @@ public class test : MonoBehaviour
 {
     public Tilemap obstacles;
     public Tilemap field;
-    public InputReader inputReader = default;
+    public InputCH inputReader = default;
     
     // Start is called before the first frame update
     void Start()

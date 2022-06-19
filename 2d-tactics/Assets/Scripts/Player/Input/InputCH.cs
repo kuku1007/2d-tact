@@ -5,8 +5,8 @@ using UnityEngine.InputSystem;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-[CreateAssetMenu(fileName = "InputReader", menuName = "Game/Input Reader")]
-public class InputReader : ScriptableObject, Gen_PlayerInputActions.IPlayerActions
+[CreateAssetMenu(fileName = "InputCH", menuName = "Game/Input Channel")]
+public class InputCH : ScriptableObject, Gen_PlayerInputActions.IPlayerActions
 {
     public event UnityAction<Vector2> moveEvent;
     public event UnityAction<Vector2> clickEvent;

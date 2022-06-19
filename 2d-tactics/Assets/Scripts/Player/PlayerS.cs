@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class PlayerS : MonoBehaviour
 {
-    [SerializeField] private InputReader inputReader = default;
+    [SerializeField] private InputCH inputReader = default;
     private Rigidbody2D rb;
     private Vector2 moveDirection;
     private Vector2 pointerPosition;
