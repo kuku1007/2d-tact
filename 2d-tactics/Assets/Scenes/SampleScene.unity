@@ -1212,6 +1212,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 317860559}
   m_CullTransparentMesh: 1
+--- !u!1 &353515027
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 353515029}
+  - component: {fileID: 353515028}
+  m_Layer: 0
+  m_Name: Game
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &353515028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353515027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dd75c30c6ff1aa64a6c8d5c51c951b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InputReader: {fileID: 11400000, guid: 5dc2c68601493234fb92d1f75570931b, type: 2}
+--- !u!4 &353515029
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353515027}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 80, y: 15, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1530,37 +1575,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &831502616
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 831502617}
-  m_Layer: 0
-  m_Name: GameController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &831502617
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 831502616}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 225.44191, y: 38.128365, z: -0.111328125}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1027782469
 GameObject:
   m_ObjectHideFlags: 0
@@ -2125,29 +2139,14 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 7002852520376160098, guid: 8b35d862851c6f7418bad110316d3072, type: 3}
+      propertyPath: inputReader
+      value: 
+      objectReference: {fileID: 11400000, guid: 5dc2c68601493234fb92d1f75570931b, type: 2}
     - target: {fileID: 7002852520376160100, guid: 8b35d862851c6f7418bad110316d3072, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Character
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7002852520376160110, guid: 8b35d862851c6f7418bad110316d3072, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8b35d862851c6f7418bad110316d3072, type: 3}
---- !u!1 &7002852519622058887 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7002852520376160100, guid: 8b35d862851c6f7418bad110316d3072, type: 3}
-  m_PrefabInstance: {fileID: 7002852519622058886}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7002852519622058888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7002852519622058887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8f8958f57598c548a3dcad0801f7553, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obstacles: {fileID: 687066332}
-  field: {fileID: 210243590}
-  inputReader: {fileID: 11400000, guid: cc492931b75a5ce4cb43a0477728647b, type: 2}

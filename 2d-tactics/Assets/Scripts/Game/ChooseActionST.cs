@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChooseActionST : MonoBehaviour
+public class ChooseActionST : State
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    private StateMachine sm;
+    public ChooseActionST(StateMachine sm) {
+        this.sm = sm;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void onClick(Vector2 position) {
+        Debug.Log("action choosen");
+        // sm.SetState(next state depending on the action choosen);
     }
 }

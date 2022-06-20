@@ -2,26 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BattleSystem : MonoBehaviour
+public class BattleSystem : StateMachine // TODO: ScriptableObject
 {
-    [SerializeField] private InputCH inputCH = default;
+    [SerializeField] private InputReader InputReader = default;
+    private State currentState;
 
     // Start is called before the first frame update
     void Start()
     {
-                this.inputCH.clickEvent += onClick;
-
+        this.currentState = new ChooseCharacterST(this);
+        this.InputReader.clickEvent += currentState.onClick;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void onClick(Vector2 position){
-
-            return;
-                
+    public override void SetState(State newState) {
+        this.InputReader.clickEvent -= currentState.onClick;
+        this.currentState = newState;
+        this.InputReader.clickEvent += currentState.onClick;
     }
 }
