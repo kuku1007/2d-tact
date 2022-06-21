@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class ChooseActionST : State
 {
-    private StateMachine sm;
-    public ChooseActionST(StateMachine sm) {
-        this.sm = sm;
-    }
+    public ChooseActionST(BattleSystem sm) : base(sm) {}
 
-    public void onClick(Vector2 position) {
+    public override void onClick(Vector2 position) {
         Debug.Log("action choosen");
         // sm.SetState(next state depending on the action choosen);
     }

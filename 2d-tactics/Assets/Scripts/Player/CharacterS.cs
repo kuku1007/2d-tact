@@ -3,7 +3,7 @@ using UnityEngine.Tilemaps;
 using DG.Tweening;
 using System.Collections.Generic;
 
-public class PlayerS : MonoBehaviour
+public class CharacterS : MonoBehaviour
 {
     [SerializeField] private InputReader inputReader = default;
     private Rigidbody2D rb;
@@ -23,8 +23,7 @@ public class PlayerS : MonoBehaviour
     public delegate void PlayerShoot(float shootAngle, Vector3 shootDirection);
     public static event PlayerShoot OnPlayerShoot;
 
-    void Start()
-    {
+    public void Init() {
         this.inputReader.clickEvent += onClick;
         this.rb = GetComponent<Rigidbody2D>();
         this.pointerPosition = rb.transform.position;
@@ -40,6 +39,10 @@ public class PlayerS : MonoBehaviour
                 obstaclesPositions.Add((Vector2Int)(pos));
             }
         }
+    }
+
+    void Start()
+    {
     
     }
     

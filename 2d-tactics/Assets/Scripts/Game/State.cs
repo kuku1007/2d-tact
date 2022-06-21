@@ -2,8 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface State
+public abstract class State
 {
-    public void onClick(Vector2 position) {}
-    public void onHover(Vector2 position) {}
+    protected BattleSystem sm;
+
+    public State(BattleSystem sm) {
+        this.sm = sm;
+    }
+
+    public virtual void onClick(Vector2 position) {}
+    public virtual void onHover(Vector2 position) {}
 }

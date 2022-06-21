@@ -9,7 +9,7 @@ public class WeaponS : MonoBehaviour
 
     void Start()
     {
-        PlayerS.OnPlayerShoot += Shoot;
+        CharacterS.OnPlayerShoot += Shoot;
     }
 
     private void Shoot(float shootAngle, Vector3 shoorDirection) { // TODO: create bullet script 

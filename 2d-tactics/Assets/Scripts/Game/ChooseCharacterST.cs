@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class ChooseCharacterST : State
 {
-    private StateMachine sm;
-
-    public ChooseCharacterST(StateMachine sm) {
-        this.sm = sm;
-    }
+    public ChooseCharacterST(BattleSystem sm) : base(sm) {}
     
-    public void onClick(Vector2 position) {
+    public override void onClick(Vector2 position) {
         Debug.Log("char choosen");
         sm.SetState(new ChooseActionST(sm));
         //check if clicked on character and send event characterSelected
