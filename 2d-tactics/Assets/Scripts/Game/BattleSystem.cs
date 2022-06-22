@@ -6,6 +6,7 @@ public class BattleSystem : MonoBehaviour // TODO: ScriptableObject
 {
     [SerializeField] private InputReader InputReader = default;
     public GameCH GameCH;
+    public Camera mainCamera;
     
     private State currentState;
 

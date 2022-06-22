@@ -10,20 +10,43 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Tilemap field; // TODO: via Channel? onInit?
     [SerializeField] private Tilemap obstacles;
     [SerializeField] private Camera mainCamera;
-    // Start is called before the first frame update
+
+    private Dictionary<int, GameObject> characters = new Dictionary<int, GameObject>();
+    private GameObject selectedCharacter;
+
     void Awake()
     {
         gameCH.initEvent += onInit;
+        gameCH.characterSelectedEvent += onCharacterSelected;
     }
 
     private void onInit() {
-        Debug.Log("spawning player team");
+        
         Vector2Int tileSpawnPosition = new Vector2Int(-4,0);
         Vector3 spawnPosition = field.CellToWorld(new Vector3Int(tileSpawnPosition.x, tileSpawnPosition.y, 0));
+        GameObject character = spawnCharacter(spawnPosition);
+        characters.Add(character.transform.GetInstanceID(), character);
+        Debug.Log("spawned char: " + character.transform.GetInstanceID());
+
+        Vector2Int tileSpawnPosition2 = new Vector2Int(-4,1);
+        Vector3 spawnPosition2 = field.CellToWorld(new Vector3Int(tileSpawnPosition2.x, tileSpawnPosition2.y, 0));
+        GameObject character2 = spawnCharacter(spawnPosition2);
+        characters.Add(character2.transform.GetInstanceID(), character2);
+        Debug.Log("spawned char: " + character2.transform.GetInstanceID());
+    }
+
+    private void onCharacterSelected(int charID) {
+        this.selectedCharacter = characters[charID];
+        Debug.Log("Selected char: " + charID);
+    }
+
+    private GameObject spawnCharacter(Vector2 spawnPosition) {
         GameObject characterInstance = Instantiate(character, spawnPosition, Quaternion.identity);
-        characterInstance.GetComponent<CharacterS>().field = field;
-        characterInstance.GetComponent<CharacterS>().obstacles = obstacles;
-        characterInstance.GetComponent<CharacterS>().mainCamera = mainCamera;
+        characterInstance.GetComponent<CharacterS>().field = this.field;
+        characterInstance.GetComponent<CharacterS>().obstacles = this.obstacles;
+        characterInstance.GetComponent<CharacterS>().mainCamera = this.mainCamera;
         characterInstance.GetComponent<CharacterS>().Init();
+
+        return characterInstance;
     }
 }

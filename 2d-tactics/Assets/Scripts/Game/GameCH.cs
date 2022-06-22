@@ -9,6 +9,7 @@ public class GameCH : ScriptableObject
 {
     public event UnityAction initEvent;
     public event UnityAction<Vector2> moveEvent;
+    public event UnityAction<int> characterSelectedEvent;
 
     public void RaiseInit() {
 		  initEvent?.Invoke();
@@ -16,6 +17,10 @@ public class GameCH : ScriptableObject
 
     public void RaiseMove(Vector2 destination) {
 		  moveEvent?.Invoke(destination);
+    }
+
+    public void RaiseCharacterSelected(int objectID) {
+        characterSelectedEvent?.Invoke(objectID);
     }
 
 }
