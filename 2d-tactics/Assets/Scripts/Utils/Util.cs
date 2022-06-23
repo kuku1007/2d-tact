@@ -12,8 +12,8 @@ public class Util
         if (hit.collider != null) {
             Debug.Log("hit");
             if(hit.collider.tag == tagToFind) {                         
-                Debug.Log("---> Hit: " + hit.transform.GetInstanceID());
-                return hit.transform.GetInstanceID();                   
+                Debug.Log("---> Hit: " + hit.transform.gameObject.GetInstanceID());
+                return hit.transform.gameObject.GetInstanceID();                   
             }
         }
 

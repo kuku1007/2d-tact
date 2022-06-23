@@ -8,7 +8,7 @@ public class BattleSystem : MonoBehaviour // TODO: ScriptableObject
     public GameCH GameCH;
     public Camera mainCamera;
     
-    private State currentState;
+    private IState currentState;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +17,7 @@ public class BattleSystem : MonoBehaviour // TODO: ScriptableObject
         this.InputReader.clickEvent += propagateOnClick;
     }
 
-    public void SetState(State newState) {
+    public void SetState(IState newState) {
         this.currentState = newState;
     }
 

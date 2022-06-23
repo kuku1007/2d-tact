@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class State
+public abstract class IState
 {
     protected BattleSystem sm;
 
-    public State(BattleSystem sm) {
+    public IState(BattleSystem sm) {
         this.sm = sm;
     }
 

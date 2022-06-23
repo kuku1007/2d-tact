@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     {
         gameCH.initEvent += onInit;
         gameCH.characterSelectedEvent += onCharacterSelected;
+        gameCH.moveEvent += onMove;
     }
 
     private void onInit() {
@@ -25,19 +26,31 @@ public class PlayerController : MonoBehaviour
         Vector2Int tileSpawnPosition = new Vector2Int(-4,0);
         Vector3 spawnPosition = field.CellToWorld(new Vector3Int(tileSpawnPosition.x, tileSpawnPosition.y, 0));
         GameObject character = spawnCharacter(spawnPosition);
-        characters.Add(character.transform.GetInstanceID(), character);
-        Debug.Log("spawned char: " + character.transform.GetInstanceID());
+        characters.Add(character.GetInstanceID(), character);
+        Debug.Log("spawned char: " + character.GetInstanceID());
 
         Vector2Int tileSpawnPosition2 = new Vector2Int(-4,1);
         Vector3 spawnPosition2 = field.CellToWorld(new Vector3Int(tileSpawnPosition2.x, tileSpawnPosition2.y, 0));
         GameObject character2 = spawnCharacter(spawnPosition2);
-        characters.Add(character2.transform.GetInstanceID(), character2);
-        Debug.Log("spawned char: " + character2.transform.GetInstanceID());
+        characters.Add(character2.GetInstanceID(), character2);
+        Debug.Log("spawned char: " + character2.GetInstanceID());
     }
 
     private void onCharacterSelected(int charID) {
         this.selectedCharacter = characters[charID];
         Debug.Log("Selected char: " + charID);
+    }
+
+    private void onMove(Vector2 destination) {
+        if(selectedCharacter != null) {
+            selectedCharacter.GetComponent<CharacterS>().move(destination);
+        }
+    }
+
+    private void onAttack(Vector2 target) {
+        if(selectedCharacter != null) {
+            
+        }
     }
 
     private GameObject spawnCharacter(Vector2 spawnPosition) {

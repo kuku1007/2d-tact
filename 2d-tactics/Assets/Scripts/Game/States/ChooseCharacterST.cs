@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChooseCharacterST : State
+public class ChooseCharacterST : IState
 {
     private Camera mainCamera;
     private string tagToFind;
@@ -13,8 +13,6 @@ public class ChooseCharacterST : State
     }
     
     public override void onClick(Vector2 position) {
-        //check if clicked on character and send event characterSelected
-        //sm.SetState(new ChooseActionST(this.sm));
         int charID = Util.checkClickedObject(mainCamera, position, tagToFind);
         Debug.Log("char choosen: " + charID);
         if(charID != -1) {

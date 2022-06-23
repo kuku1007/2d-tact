@@ -5,7 +5,6 @@ using System.Collections.Generic;
 
 public class CharacterS : MonoBehaviour
 {
-    [SerializeField] private InputReader inputReader = default;
     private Rigidbody2D rb;
     private Vector2 moveDirection;
     private Vector2 pointerPosition;
@@ -24,7 +23,6 @@ public class CharacterS : MonoBehaviour
     public static event PlayerShoot OnPlayerShoot;
 
     public void Init() {
-        this.inputReader.clickEvent += onClick;
         this.rb = GetComponent<Rigidbody2D>();
         this.pointerPosition = rb.transform.position;
         this.prevPointerPosition = this.pointerPosition;
@@ -57,7 +55,7 @@ public class CharacterS : MonoBehaviour
         // setAnimationParamsForWASD();
     }
 
-    private void onClick(Vector2 inputPointerPos) { // TODO: clean this !!!
+    public void move(Vector2 inputPointerPos) { // TODO: clean this !!!
         pointerPosition = mainCamera.ScreenToWorldPoint(inputPointerPos);
         lookDirection = (pointerPosition - rb.position).normalized;
         lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
