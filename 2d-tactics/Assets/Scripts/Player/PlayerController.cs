@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Tilemap field; // TODO: via Channel? onInit?
     [SerializeField] private Tilemap obstacles;
     [SerializeField] private Camera mainCamera;
+    [SerializeField] private int teamID;
+
 
     private Dictionary<int, GameObject> characters = new Dictionary<int, GameObject>();
     private GameObject selectedCharacter;
@@ -23,13 +25,13 @@ public class PlayerController : MonoBehaviour
 
     private void onInit() {
         
-        Vector2Int tileSpawnPosition = new Vector2Int(-4,0);
+        Vector2Int tileSpawnPosition = new Vector2Int(teamID,0);
         Vector3 spawnPosition = field.CellToWorld(new Vector3Int(tileSpawnPosition.x, tileSpawnPosition.y, 0));
         GameObject character = spawnCharacter(spawnPosition);
         characters.Add(character.GetInstanceID(), character);
         Debug.Log("spawned char: " + character.GetInstanceID());
 
-        Vector2Int tileSpawnPosition2 = new Vector2Int(-4,1);
+        Vector2Int tileSpawnPosition2 = new Vector2Int(teamID,1);
         Vector3 spawnPosition2 = field.CellToWorld(new Vector3Int(tileSpawnPosition2.x, tileSpawnPosition2.y, 0));
         GameObject character2 = spawnCharacter(spawnPosition2);
         characters.Add(character2.GetInstanceID(), character2);
@@ -37,8 +39,11 @@ public class PlayerController : MonoBehaviour
     }
 
     private void onCharacterSelected(int charID) {
-        this.selectedCharacter = characters[charID];
-        Debug.Log("Selected char: " + charID);
+        if(characters.ContainsKey(charID)){
+            this.selectedCharacter = characters[charID];
+        } else {
+            this.selectedCharacter = null;
+        }
     }
 
     private void onMove(Vector2 destination) {
