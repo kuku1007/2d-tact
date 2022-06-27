@@ -13,4 +13,19 @@ public class ChooseActionST : IState
         sm.GameCH.RaiseMove(position);
         sm.SetState(new ChooseCharacterST(sm));
     }
+
+    public override void onUIClick(string name)
+    {
+        switch(name){
+            case "attack":
+            //
+            break;
+            case "defend":
+            //
+            break;
+            case "move":
+            //
+            break;
+        }
+    }
 }
