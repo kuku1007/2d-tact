@@ -21,6 +21,9 @@ public class PlayerController : MonoBehaviour
         gameCH.initEvent += onInit;
         gameCH.characterSelectedEvent += onCharacterSelected;
         gameCH.moveEvent += onMove;
+        gameCH.moveSelectedEvent += onMoveSelected;
+        gameCH.attackSelectedEvent += onAttackSelected;
+        gameCH.defendSelectedEvent += onDefendSelected;
     }
 
     private void onInit() {
@@ -55,6 +58,23 @@ public class PlayerController : MonoBehaviour
     private void onAttack(Vector2 target) {
         if(selectedCharacter != null) {
             
+        }
+    }
+    
+    private void onMoveSelected() {
+        if(selectedCharacter != null) {
+            Debug.Log("move characted: " + selectedCharacter.GetInstanceID());
+        }
+    }
+
+    private void onAttackSelected() {
+        if(selectedCharacter != null) {
+            Debug.Log("attack characted: " + selectedCharacter.GetInstanceID());
+        }
+    }
+    private void onDefendSelected() {
+        if(selectedCharacter != null) {
+            Debug.Log("defend characted: " + selectedCharacter.GetInstanceID());
         }
     }
 
