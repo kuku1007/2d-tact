@@ -9,7 +9,7 @@ public class AttackST : IState
 
     public AttackST(BattleSystem sm) : base(sm) {
         this.mainCamera = sm.mainCamera;
-        this.tagToFind = sm.tagOfCharacter;
+        this.tagToFind = sm.enemyTeam;
         Debug.Log("Choose character to attack"); // TODO: should be in the scope of different module
     }
 

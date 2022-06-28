@@ -11,11 +11,12 @@ public class BattleSystem : MonoBehaviour // TODO: ScriptableObject
     public Camera mainCamera;
     public Button attackBtn, defendBtn, moveBtn;
     private IState currentState;
-    public string tagOfCharacter = "unit";
+    public string currentTeam = "team1"; // TODO: hard coded
+    public string enemyTeam = "team2"; // TODO: hard coded
 
     void Start()
     {
-        this.currentState = new InitializeST(this);
+        this.currentState = new InitializeST(this); // TODO: load some game configuration, team names, team units etc
         this.InputReader.clickEvent += propagateOnClick;
         this.attackBtn.onClick.AddListener(() => propagateUIClicked("attack"));
         this.defendBtn.onClick.AddListener(() => propagateUIClicked("defend"));
@@ -26,7 +27,7 @@ public class BattleSystem : MonoBehaviour // TODO: ScriptableObject
         this.currentState = newState;
     }
 
-    public void propagateUIClicked(string btn) {
+    private void propagateUIClicked(string btn) {
         this.currentState.onUIClick(btn);
     }
 

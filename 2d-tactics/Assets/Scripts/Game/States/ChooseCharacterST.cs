@@ -9,7 +9,7 @@ public class ChooseCharacterST : IState
 
     public ChooseCharacterST(BattleSystem sm) : base(sm) {
         this.mainCamera = sm.mainCamera;
-        this.tagToFind = sm.tagOfCharacter;
+        this.tagToFind = sm.currentTeam;
     }
     
     public override void onClick(Vector2 position) {

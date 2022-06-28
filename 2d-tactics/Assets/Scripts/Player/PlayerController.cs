@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Tilemap obstacles;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private int teamID;
+    [SerializeField] private string teamName;
 
 
     private Dictionary<int, GameObject> characters = new Dictionary<int, GameObject>();
@@ -30,15 +31,13 @@ public class PlayerController : MonoBehaviour
         
         Vector2Int tileSpawnPosition = new Vector2Int(teamID,0);
         Vector3 spawnPosition = field.CellToWorld(new Vector3Int(tileSpawnPosition.x, tileSpawnPosition.y, 0));
-        GameObject character = spawnCharacter(spawnPosition);
+        GameObject character = spawnCharacter(spawnPosition, this.teamName);
         characters.Add(character.GetInstanceID(), character);
-        Debug.Log("spawned char: " + character.GetInstanceID());
 
         Vector2Int tileSpawnPosition2 = new Vector2Int(teamID,1);
         Vector3 spawnPosition2 = field.CellToWorld(new Vector3Int(tileSpawnPosition2.x, tileSpawnPosition2.y, 0));
-        GameObject character2 = spawnCharacter(spawnPosition2);
+        GameObject character2 = spawnCharacter(spawnPosition2, this.teamName);
         characters.Add(character2.GetInstanceID(), character2);
-        Debug.Log("spawned char: " + character2.GetInstanceID());
     }
 
     private void onCharacterSelected(int charID) {
@@ -78,8 +77,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private GameObject spawnCharacter(Vector2 spawnPosition) {
+    private GameObject spawnCharacter(Vector2 spawnPosition, string teamTag) {
         GameObject characterInstance = Instantiate(character, spawnPosition, Quaternion.identity);
+        characterInstance.tag = teamTag;
         characterInstance.GetComponent<CharacterS>().field = this.field;
         characterInstance.GetComponent<CharacterS>().obstacles = this.obstacles;
         characterInstance.GetComponent<CharacterS>().mainCamera = this.mainCamera;
