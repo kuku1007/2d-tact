@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveST : MonoBehaviour
+public class MoveST : IState
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public MoveST(BattleSystem sm) : base(sm) {}
+    public override void onClick(Vector2 position) {
+        Debug.Log("moving character");
+        sm.GameCH.RaiseMove(position);
+        sm.SetState(new ChooseCharacterST(sm));
     }
 }

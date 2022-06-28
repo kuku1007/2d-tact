@@ -2,17 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackST : MonoBehaviour
+public class AttackST : IState
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    private Camera mainCamera;
+    private string tagToFind;
+
+    public AttackST(BattleSystem sm) : base(sm) {
+        this.mainCamera = sm.mainCamera;
+        this.tagToFind = sm.tagOfCharacter;
+        Debug.Log("Choose character to attack"); // TODO: should be in the scope of different module
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public override void onClick(Vector2 position) {
+        int charID = Util.checkClickedObject(mainCamera, position, tagToFind);
+        Debug.Log("char choosen: " + charID);
+        if(charID != -1) {
+            Debug.Log("attacking character: " + charID);
+            sm.SetState(new ChooseCharacterST(sm));
+        }
     }
+
 }

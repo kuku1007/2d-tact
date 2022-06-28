@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DefendST : MonoBehaviour
+public class DefendST : IState
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public DefendST(BattleSystem sm) : base(sm) {}
+    public override void onClick(Vector2 position) {
+        Debug.Log("defending");
+        // attack other char
+        sm.SetState(new ChooseCharacterST(sm));
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

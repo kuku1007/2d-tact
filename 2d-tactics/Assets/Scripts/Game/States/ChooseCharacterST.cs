@@ -9,7 +9,7 @@ public class ChooseCharacterST : IState
 
     public ChooseCharacterST(BattleSystem sm) : base(sm) {
         this.mainCamera = sm.mainCamera;
-        this.tagToFind = "unit";
+        this.tagToFind = sm.tagOfCharacter;
     }
     
     public override void onClick(Vector2 position) {

@@ -10,26 +10,23 @@ public class BattleSystem : MonoBehaviour // TODO: ScriptableObject
     public GameCH GameCH;
     public Camera mainCamera;
     public Button attackBtn, defendBtn, moveBtn;
-    
     private IState currentState;
+    public string tagOfCharacter = "unit";
 
-    // Start is called before the first frame update
     void Start()
     {
         this.currentState = new InitializeST(this);
         this.InputReader.clickEvent += propagateOnClick;
-        this.attackBtn.onClick.AddListener(() => UiClicked("attack"));
-        this.defendBtn.onClick.AddListener(() => UiClicked("defend"));
-        this.moveBtn.onClick.AddListener(() => UiClicked("move"));
-
+        this.attackBtn.onClick.AddListener(() => propagateUIClicked("attack"));
+        this.defendBtn.onClick.AddListener(() => propagateUIClicked("defend"));
+        this.moveBtn.onClick.AddListener(() => propagateUIClicked("move"));
     }
 
     public void SetState(IState newState) {
         this.currentState = newState;
     }
 
-    public void UiClicked(string btn) {
-        Debug.Log(btn);
+    public void propagateUIClicked(string btn) {
         this.currentState.onUIClick(btn);
     }
 
