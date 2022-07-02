@@ -8,7 +8,7 @@ public class DefendST : IState
     public override void onClick(Vector2 position) {
         Debug.Log("defending");
         // attack other char
-        sm.SetState(new ChooseCharacterST(sm, null)); // TODO
+        sm.SetState(new ChooseCharacterST(sm));
     }
 
 }

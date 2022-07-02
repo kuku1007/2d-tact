@@ -7,9 +7,9 @@ public class ChooseCharacterST : IState
     private Camera mainCamera;
     private string tagToFind;
 
-    public ChooseCharacterST(UIInputSystem sm, TurnContext turnContext) : base(sm) {
+    public ChooseCharacterST(UIInputSystem sm) : base(sm) {
         this.mainCamera = sm.mainCamera;
-        this.tagToFind = turnContext.currentTeamTag;
+        this.tagToFind = sm.turnContext.currentTeamTag;
     }
     
     public override void onClick(Vector2 position) {
@@ -21,9 +21,9 @@ public class ChooseCharacterST : IState
         checkClickedObject(position);
     }
 
-    public override void onContextChanged(TurnContext turnContext)
+    public override void onContextChanged()
     {
-        this.tagToFind = turnContext.currentTeamTag;
+        this.tagToFind = sm.turnContext.currentTeamTag;
     }
 
     private bool tagToFindAvailable() {

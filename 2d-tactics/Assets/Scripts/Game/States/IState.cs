@@ -13,7 +13,7 @@ public abstract class IState
     public virtual void onClick(Vector2 position) {}
     public virtual void onHover(Vector2 position) {}
     public virtual void onUIClick(string name) {}
-    public virtual void onContextChanged(TurnContext turnContext) {}
+    public virtual void onContextChanged() {}
 
     
 }

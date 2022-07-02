@@ -13,6 +13,7 @@ public class UIInputSystem : MonoBehaviour // TODO: ScriptableObject
     private IState currentState;
     public string currentTeam = "team1"; // TODO: hard coded
     public string enemyTeam = "team2"; // TODO: hard coded
+    public TurnContext turnContext = null;
 
     void Start()
     {
@@ -36,7 +37,8 @@ public class UIInputSystem : MonoBehaviour // TODO: ScriptableObject
         this.currentState.onClick(position);
     }
 
-    private void propagateContextChanged(TurnContext turnContext) {
-        this.currentState.onContextChanged(turnContext);
+    private void propagateContextChanged(TurnContext turnContextIn) {
+        this.turnContext = turnContextIn;
+        this.currentState.onContextChanged();
     }
 }

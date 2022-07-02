@@ -8,6 +8,6 @@ public class MoveST : IState
     public override void onClick(Vector2 position) {
         Debug.Log("moving character");
         sm.GameCH.RaiseMove(position);
-        sm.SetState(new ChooseCharacterST(sm, null)); // TODO
+        sm.SetState(new ChooseCharacterST(sm));
     }
 }

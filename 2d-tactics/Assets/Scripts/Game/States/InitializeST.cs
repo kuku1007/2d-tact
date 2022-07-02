@@ -14,8 +14,8 @@ public class InitializeST : IState
         sm.GameCH.RaiseInit();
     }
 
-    public override void onContextChanged(TurnContext turnContext)
+    public override void onContextChanged()
     {
-       sm.SetState(new ChooseCharacterST(sm, turnContext));
+       sm.SetState(new ChooseCharacterST(sm));
     }
 }
