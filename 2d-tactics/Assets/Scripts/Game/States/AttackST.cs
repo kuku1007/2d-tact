@@ -7,7 +7,7 @@ public class AttackST : IState
     private Camera mainCamera;
     private string tagToFind;
 
-    public AttackST(BattleSystem sm) : base(sm) {
+    public AttackST(UIInputSystem sm) : base(sm) {
         this.mainCamera = sm.mainCamera;
         this.tagToFind = sm.enemyTeam;
         Debug.Log("Choose character to attack"); // TODO: should be in the scope of different module
@@ -18,7 +18,7 @@ public class AttackST : IState
         Debug.Log("char choosen: " + charID);
         if(charID != -1) {
             Debug.Log("attacking character: " + charID);
-            sm.SetState(new ChooseCharacterST(sm));
+            sm.SetState(new ChooseCharacterST(sm, null)); // TODO
         }
     }
 

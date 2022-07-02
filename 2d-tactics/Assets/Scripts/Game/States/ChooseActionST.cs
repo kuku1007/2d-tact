@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChooseActionST : IState
 {
-    public ChooseActionST(BattleSystem sm) : base(sm) {}
+    public ChooseActionST(UIInputSystem sm) : base(sm) {}
     public override void onUIClick(string name)
     {
         switch(name){

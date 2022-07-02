@@ -4,19 +4,23 @@ using UnityEngine;
 
 public class TurnSystem : MonoBehaviour
 {
+    // TODO: make fields private serializable or getter/setter
     public GameCH gameCH;
     public int currentTurn = 1;
-    public string currentTeam; //new clss Team with units clss in umit class all stats, turn poimts etc it
+    public Team currentTeam; //new clss Team with units clss in umit class all stats, turn poimts etc it
     // should have reference to charID
-    public string enemyTeam;
-    // Start is called before the first frame update
-    void Start()
+    public Team enemyTeam;
+
+    private TurnContext turnContext;
+
+    void Awake()
     {
+        this.turnContext = new TurnContext(currentTeam.teamTag, enemyTeam.teamTag);
+        this.gameCH.initEvent += onInit;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void onInit()
+    {   
+        gameCH.RaiseTurnContextChanged(turnContext);
     }
 }

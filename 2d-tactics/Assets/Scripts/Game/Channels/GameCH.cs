@@ -13,6 +13,7 @@ public class GameCH : ScriptableObject
     public event UnityAction moveSelectedEvent;
     public event UnityAction attackSelectedEvent;
     public event UnityAction defendSelectedEvent;
+    public event UnityAction<TurnContext> turnContextChangedEvent;
 
     public void RaiseInit() {
 		  initEvent?.Invoke();
@@ -36,5 +37,9 @@ public class GameCH : ScriptableObject
 
     public void RaiseDefendSelected() {
 		  defendSelectedEvent?.Invoke();
+    }
+
+    public void RaiseTurnContextChanged(TurnContext turnContext) {
+		  turnContextChangedEvent?.Invoke(turnContext);
     }
 }

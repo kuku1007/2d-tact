@@ -38,11 +38,6 @@ public class CharacterS : MonoBehaviour
             }
         }
     }
-
-    void Start()
-    {
-    
-    }
     
     void FixedUpdate()
     {

@@ -4,15 +4,16 @@ using UnityEngine;
 
 public abstract class IState
 {
-    protected BattleSystem sm;
+    protected UIInputSystem sm;
 
-    public IState(BattleSystem sm) {
+    public IState(UIInputSystem sm) {
         this.sm = sm;
     }
 
     public virtual void onClick(Vector2 position) {}
     public virtual void onHover(Vector2 position) {}
     public virtual void onUIClick(string name) {}
+    public virtual void onContextChanged(TurnContext turnContext) {}
 
     
 }

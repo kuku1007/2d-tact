@@ -1295,6 +1295,7 @@ GameObject:
   m_Component:
   - component: {fileID: 353515029}
   - component: {fileID: 353515028}
+  - component: {fileID: 353515030}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -1320,7 +1321,8 @@ MonoBehaviour:
   attackBtn: {fileID: 1218097375}
   defendBtn: {fileID: 284392352}
   moveBtn: {fileID: 1312592863}
-  tagOfCharacter: team1
+  currentTeam: team1
+  enemyTeam: team2
 --- !u!4 &353515029
 Transform:
   m_ObjectHideFlags: 0
@@ -1336,6 +1338,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &353515030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353515027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f68e8775cf6baab09b99983a5ec3b460, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameCH: {fileID: 11400000, guid: 1576da1a5fdcfbf4392908124e225480, type: 2}
+  currentTurn: 1
+  currentTeam: {fileID: 11400000, guid: 371bddef13d443748bc29f40aa65e18c, type: 2}
+  enemyTeam: {fileID: 11400000, guid: bc6ffff393d1d624487d7d6cb096e17a, type: 2}
+  currentTeamTag: team1
+  enemyTeamTag: team2
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

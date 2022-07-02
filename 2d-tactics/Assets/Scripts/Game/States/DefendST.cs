@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class DefendST : IState
 {
-    public DefendST(BattleSystem sm) : base(sm) {}
+    public DefendST(UIInputSystem sm) : base(sm) {}
     public override void onClick(Vector2 position) {
         Debug.Log("defending");
         // attack other char
-        sm.SetState(new ChooseCharacterST(sm));
+        sm.SetState(new ChooseCharacterST(sm, null)); // TODO
     }
 
 }

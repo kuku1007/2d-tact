@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class InitializeST : IState
 {
-    public InitializeST(BattleSystem sm) : base(sm) {}
+    private TurnContext turnContext;
+
+    public InitializeST(UIInputSystem sm, TurnContext turnContext) : base(sm) {
+        this.turnContext = turnContext;
+    }
 
     public override void onClick(Vector2 position) {
         sm.GameCH.RaiseInit();
-        sm.SetState(new ChooseCharacterST(sm));
+    }
+
+    public override void onContextChanged(TurnContext turnContext)
+    {
+       sm.SetState(new ChooseCharacterST(sm, turnContext));
     }
 }
